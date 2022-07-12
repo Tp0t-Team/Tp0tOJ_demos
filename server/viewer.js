@@ -92,8 +92,12 @@ $(document).ready(function () {
   "use strict";
   $(".collect").click(function(){
     document.getElementById("collect-btn").disabled = true;
-    $.get("/collection/"+this.innerHTML,LoadTraces);
-    return function(){document.getElementById("collect-btn").disabled = false;}()
+    $.get("/collection/"+this.innerHTML,function() {
+      document.getElementById("collect-btn").disabled = false;
+      LoadTraces();
+    }).fail(function () {
+      document.getElementById("collect-btn").disabled = false;
+    });
   });
   //need a better way to get data
   $("#traces").bootstrapTable({
