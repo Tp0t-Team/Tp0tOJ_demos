@@ -5,9 +5,11 @@ RUN apt-get -y upgrade
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
+      apt-utils \
       build-essential \
       git \
       bzip2 \
+      # xinetd \
       bsdmainutils \
       python3 \
       python3-pip \
@@ -21,22 +23,25 @@ RUN useradd -u 8888 -m HTTELab
 # Key is the first 16 bytes in data.txt
 
 # ELMO executable and runtime dependencies.
-COPY elmo.tgz /home/HTTELab/
+COPY share/elmo.tgz /home/HTTELab/
 RUN cd /home/HTTELab && tar xfvz elmo.tgz --strip=1
 
 # Target firmware binary.
-COPY firmware.tgz /home/HTTELab/
+COPY share/firmware.tgz /home/HTTELab/firmware.tgz
 RUN cd /home/HTTELab && tar xfvz firmware.tgz --strip=1 firmware/firmware.bin
 
 # server
-COPY server.tgz /home/HTTELab/
-RUN tar xfvz server.tgz --strip=1
+COPY share/server.tgz /home/HTTELab/server.tgz
+RUN cd /home/HTTELab && tar xfvz server.tgz --strip=1
 
 # Collect plaintext (randdata), ciphertext (printdata) and traces.
-COPY traces/collect.py /home/HTTELab/traces/collect.py
-COPY traces/downsample.py /home/HTTELab/traces/downsample.py
+COPY share/traces/collect.py /home/HTTELab/traces/collect.py
+COPY share/traces/downsample.py /home/HTTELab/traces/downsample.py
 
 COPY entrypoint.sh /home/HTTELab/entrypoint.sh
 ENTRYPOINT ["/home/HTTELab/entrypoint.sh"]
+
+# RUN rm /etc/xinetd.d/*
+# COPY xinetd /etc/xinetd.d/xinetd
 
 EXPOSE 8888

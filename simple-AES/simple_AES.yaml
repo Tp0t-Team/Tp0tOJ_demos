@@ -1,17 +1,17 @@
-name: simple-AES
+name: simple_aes
 category: CRYPTO
 score:
   baseScore: 1000
   dynamic: true
 flag: 
-  value: flag{test}
+  value: xxxxxxxxxxxxxxxx
   dynamic: true
 description: "this is a test side-channel"
-externalLink: [http://cloud.lordcasser.com/s/DkxtK]
+externalLink: []
 singleton: false
 nodeConfig:
-  - name: "aes1"
-    image: "aes1"
+  - name: "aes"
+    image: "aes"
     servicePorts:
       - name: http
         protocol: TCP
