@@ -1,0 +1,11 @@
+name: single_flag
+category: RE
+score:
+  baseScore: 1000
+  dynamic: true
+flag: 
+  value: flag{single_flag} # means that random dynamic flag length is 10
+  type: 0 # 0-Single 1-Multiple 2-Regexp 3-Dynamic
+description: "this is a test single_flag"
+externalLink: ["https://filelink.com"]
+singleton: true

@@ -1,4 +1,4 @@
-name: pwn1
+name: dynamic_flag
 category: PWN
 score:
   baseScore: 1000
@@ -17,4 +17,4 @@ nodeConfig:
         protocol: TCP
         external: 8888
         internal: 8888
-        pod: 0 #default DON'T CHANGE IT
+        pod: 0 #default & DON'T CHANGE IT

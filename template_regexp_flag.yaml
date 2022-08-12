@@ -1,0 +1,11 @@
+name: multiple_flag
+category: MISC
+score:
+  baseScore: 1000
+  dynamic: true
+flag:
+  value: flag\{\w+\} # Accepts anything that matches a regular expression
+  type: 2 # 0-Single 1-Multiple 2-Regexp 3-Dynamic
+description: "this is a test multiple_flag"
+externalLink: ["https://filelink.com"]
+singleton: true

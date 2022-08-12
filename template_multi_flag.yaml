@@ -1,0 +1,15 @@
+name: multiple_flag
+category: MISC
+score:
+  baseScore: 1000
+  dynamic: true
+flag:
+  value: |
+    flag{multiple_flag_1}
+    flag{multiple_flag_2}
+    flag{multiple_flag_3}
+    flag{multiple_flag_4}
+  type: 1 # 0-Single 1-Multiple 2-Regexp 3-Dynamic
+description: "this is a test multiple_flag"
+externalLink: ["https://filelink.com"]
+singleton: true
